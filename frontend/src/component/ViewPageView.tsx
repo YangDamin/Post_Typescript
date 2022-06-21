@@ -29,10 +29,10 @@ const ViewPage :React.FC<Props> = ({
     return(
         <div className={style.view_div}>
             <h3>{title}</h3>
-            <span style={{float:"left", color:"gray"}}>
+            <span className={style.span_viewCnt}>
                 조회수 {viewCnt}회 · {date}
             </span>
-            <span style={{float: "right", fontSize:"20px", cursor:"pointer"}} onClick={recommendClick}>
+            <span className={style.span_recommendCnt} onClick={recommendClick}>
                 <FaRegThumbsUp/> {recommendCnt}
             </span>
 

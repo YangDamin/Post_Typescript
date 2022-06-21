@@ -1,4 +1,10 @@
 
-.main_div{
+.main_div {
     margin-left: 100px;
+}
+
+#ag_grid {
+    width: 60vw;
+    height: 60vh;
+    margin: 25px 0 0 15vw;
 }

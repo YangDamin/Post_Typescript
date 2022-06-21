@@ -1,13 +1,26 @@
 
-.view_div{
+.view_div {
     width: 45%;
     margin: 0 auto;
     text-align: center;
 }
-.content_div{
+
+.content_div {
     margin-top: 20px;
 }
-.btn{
+
+.btn {
     width: 100%;
     text-align: right;
+}
+
+.span_viewCnt {
+    float: left;
+    color: gray;
+}
+
+.span_recommendCnt {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
 }

@@ -23,7 +23,7 @@ const UpdatePage :React.FC<Props> = ({
             <input className={style.title} type='text' placeholder='제목' defaultValue={title} onChange={onChangeTitle} />
             <br/>
 
-           <textarea rows={18} style={{ "width": "50%", "textAlign": "left" }} defaultValue={content} onChange={onChangeContent}/>
+           <textarea className={style.content} rows={18}  defaultValue={content} onChange={onChangeContent}/>
            <br/>
 
            <button type="button" className="btn btn-white btn-outline-primary mt-2" onClick={updateOnClick}>

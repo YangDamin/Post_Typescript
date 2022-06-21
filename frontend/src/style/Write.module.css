@@ -1,9 +1,15 @@
 
-.write_div{
+.write_div {
     text-align: center;
 }
-.title{
+
+.title {
     width: 50%;
     margin-bottom: 20px;
     margin-top: 20px;
+}
+
+.content {
+    width: 50%;
+    text-align: left;
 }

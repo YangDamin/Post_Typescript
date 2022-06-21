@@ -18,7 +18,7 @@ const WritePage :React.FC<Props> = ({
             <h3>글 쓰기</h3>
             <input className={style.title} type='text' placeholder='제목' onChange={onChangeTitle}/>
             <br/>
-            <textarea rows={18} style={{ "width": "50%", "textAlign": "left" }} onChange={onChangeContent}/>
+            <textarea className={style.content} rows={18} onChange={onChangeContent}/>
             <br/>
             <button type="button" className="btn btn-white btn-outline-primary mt-2" onClick={onClick}>
                 작성
