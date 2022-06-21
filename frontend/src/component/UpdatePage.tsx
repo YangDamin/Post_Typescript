@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import Swal from "sweetalert2";
 import UpdatePageView from "./UpdatePageView";
 import useUpdateStore from "../zustand/useUpdateStore";
@@ -9,6 +9,7 @@ import useUpdateStore from "../zustand/useUpdateStore";
 const UpdatePage = () => {
 
     const {id} = useParams();
+    let navigate = useNavigate();
 
     // 기존 값 가져오기 위해 Hook - useState() 이용
     const [title, setTitle] = useState('');
@@ -52,7 +53,7 @@ const UpdatePage = () => {
                     'success'
                 )
                 setTimeout( () => {
-                    window.location.href = `/posts/${id}`;
+                    navigate(`/posts/${id}`);
                 }, 2000)
             }).catch((error) => {
                 console.log(error);
@@ -64,11 +65,11 @@ const UpdatePage = () => {
     const onChangeContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         var contents : string = e.target.value;
         contents = contents.replace(/(\n|\r\n)/g, '<br>');      // 줄띄기하면 <br>로 저장되게
-        setUpdateContent(contents);
+        setContent(contents);
     }
 
     const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setUpdateTitle(e.target.value);
+        setTitle(e.target.value);
     }
 
     // 수정하기 위해 기존 값 가져오기
@@ -77,8 +78,8 @@ const UpdatePage = () => {
             url: `http://localhost:8080/posts/update/${id}`,
             method: 'get'
         }).then((res:any) => {
-            setTitle(res.data.title);
-            setContent(res.data.content);
+            setUpdateTitle(res.data.title);
+            setUpdateContent(res.data.content);
         }).catch((error) => {
             console.log(error)
         })

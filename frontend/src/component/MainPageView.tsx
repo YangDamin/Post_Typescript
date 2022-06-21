@@ -3,6 +3,7 @@ import style from '../style/Main.module.css' ;
 import { AgGridReact} from "ag-grid-react";
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
+import {useNavigate} from "react-router-dom";
 
 
 interface Props {
@@ -16,6 +17,7 @@ const MainPageView :React.FC<Props> = ({
     columnDefs,
     rowData,
 }) => {
+    let navigate = useNavigate();
 
     return (
         <div className={style.main_div}>
@@ -32,7 +34,7 @@ const MainPageView :React.FC<Props> = ({
 
                     // 행 클릭 시, 해당 게시물로 이동
                     onRowClicked = {(e) => {
-                        window.location.href = `/posts/${e.data.id}`;
+                        navigate(`/posts/${e.data.id}`);
                     }}
                 >
                 </AgGridReact>

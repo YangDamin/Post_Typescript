@@ -4,9 +4,11 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 import axios from "axios";
 import MainPageView from "./MainPageView";
 import {BoardData} from "../type/app";
+import {useNavigate} from "react-router-dom";
 
 
 const MainPage = () => {
+    let navigate = useNavigate();
 
     // AGGrid
     const [dataList, setDataList] = useState<any[]>([]);       // 게시물 data, state의 type을 지정할 땐 Generics안에 타입을 지정해준다.
@@ -21,7 +23,7 @@ const MainPage = () => {
     const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
-        window.location.href = "/posts/write";
+        navigate("/posts/write");
     }
 
     const rowData = dataList.map((data: BoardData) => {

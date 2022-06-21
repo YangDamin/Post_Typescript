@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import ViewPageView from "./ViewPageView";
@@ -9,7 +9,9 @@ import useViewStore from "../zustand/useViewStore";
 const ViewPage = () => {
     // 게시물 id
     const {id} = useParams();
+    let navigate = useNavigate();
 
+    // 어떠한 형태로 꺼내올지 정하는 함수를 전달해, 그에 맞는 state를 가져옴
     const title = useViewStore((state) => state.title);
     const setTitle = useViewStore((state) => state.setTitle);
     const content = useViewStore((state) => state.content);
@@ -44,7 +46,7 @@ const ViewPage = () => {
                             'success'
                         )
                         setTimeout(function () {
-                            window.location.href = '/';
+                            navigate("/");
                         }, 2000)
                     })
             }
@@ -54,20 +56,18 @@ const ViewPage = () => {
     // 게시물 수정
     const updateClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        window.location.href = `/posts/update/${id}`;
+        navigate(`/posts/update/${id}`);
     }
 
     // 목록으로 돌아가기 버튼
     const backClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        window.location.href = '/';
+        navigate("/");
     }
 
     // 추천 버튼 클릭 이벤트
     const recommendClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-            // 추천 버튼 클릭한 만큼 +1 증가한 값을 Backend에 put method 보내기
-
             axios({
                 url: `http://localhost:8080/posts/${id}`,
                 method: 'put'
