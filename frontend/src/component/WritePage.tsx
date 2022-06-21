@@ -2,18 +2,18 @@ import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import WritePageView from "./WritePageView";
-import useWriteStore from "../zustand/useWriteStore";
 import {useNavigate} from "react-router-dom";
+import usePostStore from "../zustand/usePostStore";
 
 
 const WritePage = () => {
     let navigate = useNavigate();
 
-    const title:string = useWriteStore((state) => state.title);
-    const setTitle = useWriteStore((state) => state.setTitle);
+    const title:string = usePostStore((state) => state.title);
+    const setTitle = usePostStore((state) => state.setTitle);
 
-    const content:string = useWriteStore((state) => state.content);
-    const setContent = useWriteStore((state) => state.setContent);
+    const content:string = usePostStore((state) => state.content);
+    const setContent = usePostStore((state) => state.setContent);
 
 
     // 작성 버튼 event

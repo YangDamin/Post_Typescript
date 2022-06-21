@@ -3,7 +3,7 @@ import axios from "axios";
 import {useNavigate, useParams} from "react-router-dom";
 import Swal from "sweetalert2";
 import UpdatePageView from "./UpdatePageView";
-import useUpdateStore from "../zustand/useUpdateStore";
+import usePostStore from "../zustand/usePostStore";
 
 
 const UpdatePage = () => {
@@ -16,15 +16,15 @@ const UpdatePage = () => {
     const [content, setContent] = useState('');
 
     // 수정하기 위해 zustand 사용
-    const updateTitle : string = useUpdateStore((state) => state.updateTitle);
-    const setUpdateTitle = useUpdateStore((state) => state.setUpdateTitle);
+    const updateTitle: string = usePostStore((state) => state.title);
+    const setUpdateTitle = usePostStore((state) => state.setTitle);
 
-    const updateContent : string = useUpdateStore((state) => state.updateContent);
-    const setUpdateContent = useUpdateStore((state) => state.setUpdateContent);
+    const updateContent: string = usePostStore((state) => state.content);
+    const setUpdateContent = usePostStore((state) => state.setContent);
 
 
     // 수정 버튼 클릭 이벤트
-    const updateOnClick = (e : React.MouseEvent<HTMLButtonElement>) => {
+    const updateOnClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
         let date = new Date();
@@ -46,13 +46,13 @@ const UpdatePage = () => {
                     "content": updateContent,
                     "date": date.toLocaleDateString()
                 }
-            }).then((res:any) => {
+            }).then((res: any) => {
                 Swal.fire(
                     '',
                     '수정 완료!',
                     'success'
                 )
-                setTimeout( () => {
+                setTimeout(() => {
                     navigate(`/posts/${id}`);
                 }, 2000)
             }).catch((error) => {
@@ -63,13 +63,13 @@ const UpdatePage = () => {
 
     // 수정한 content set해주기
     const onChangeContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        var contents : string = e.target.value;
+        var contents: string = e.target.value;
         contents = contents.replace(/(\n|\r\n)/g, '<br>');      // 줄띄기하면 <br>로 저장되게
-        setContent(contents);
+        setUpdateContent(contents);
     }
 
     const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.target.value);
+        setUpdateTitle(e.target.value);
     }
 
     // 수정하기 위해 기존 값 가져오기
@@ -77,14 +77,14 @@ const UpdatePage = () => {
         axios({
             url: `http://localhost:8080/posts/update/${id}`,
             method: 'get'
-        }).then((res:any) => {
-            setUpdateTitle(res.data.title);
-            setUpdateContent(res.data.content);
+        }).then((res: any) => {
+            setTitle(res.data.title);
+            setContent(res.data.content);
         }).catch((error) => {
             console.log(error)
         })
     }, [id])
-    
+
 
     const updatePageViewProps = {
         title,

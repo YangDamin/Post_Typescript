@@ -3,7 +3,7 @@ import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import ViewPageView from "./ViewPageView";
-import useViewStore from "../zustand/useViewStore";
+import usePostStore from "../zustand/usePostStore";
 
 
 const ViewPage = () => {
@@ -12,14 +12,14 @@ const ViewPage = () => {
     let navigate = useNavigate();
 
     // 어떠한 형태로 꺼내올지 정하는 함수를 전달해, 그에 맞는 state를 가져옴
-    const title = useViewStore((state) => state.title);
-    const setTitle = useViewStore((state) => state.setTitle);
-    const content = useViewStore((state) => state.content);
-    const setContent = useViewStore((state) => state.setContent);
-    const date = useViewStore((state) => state.date);
-    const setDate = useViewStore((state) => state.setDate);
-    const viewCnt = useViewStore((state) => state.viewCnt);
-    const setViewCnt = useViewStore((state) => state.setViewCnt);
+    const title = usePostStore((state) => state.title);
+    const setTitle = usePostStore((state) => state.setTitle);
+    const content = usePostStore((state) => state.content);
+    const setContent = usePostStore((state) => state.setContent);
+    const date = usePostStore((state) => state.date);
+    const setDate = usePostStore((state) => state.setDate);
+    const viewCnt = usePostStore((state) => state.viewCnt);
+    const setViewCnt = usePostStore((state) => state.setViewCnt);
 
     // 추천 수
     const [recommendCnt, setRecommendCnt] = useState(0);
