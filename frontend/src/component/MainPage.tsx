@@ -26,15 +26,19 @@ const MainPage = () => {
         navigate("/posts/write");
     }
 
-    const rowData = dataList.map((data: BoardData) => {
-        return {
-            title: data.title,
-            date: data.date,
-            id: data.id,
-            viewCnt : data.viewCnt,
-            recommendCnt : data.recommendCnt
-        }
-    })
+    // const rowData = dataList.map((data: BoardData) => {
+    //     return {
+    //         title: data.title,
+    //         date: data.date,
+    //         id: data.id,
+    //         viewCnt : data.viewCnt,
+    //         recommendCnt : data.recommendCnt
+    //     }
+    // })
+    
+    // Backend에서 가져오는 것과 === AGGrid의 rowData로 매핑시키는 것이 동일하면
+    // 굳이 map 함수를 사용하지 않아도 됨. 시간 줄이기
+    const rowData = dataList;
 
     const mainPageViewProps = {
         onClick,
