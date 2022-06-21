@@ -23,9 +23,9 @@ const App = () => {
                 <Header/>
                 <Routes>
                     <Route path="/" element={<MainPage/>}/>
-                    <Route path="/posts/write" element={<WritePage/>}/>
+                    <Route path="/posts" element={<WritePage/>}/>
                     <Route path="/posts/:id" element={<ViewPage/>}/>
-                    <Route path="/posts/update/:id" element={<UpdatePage/>}/>
+                    <Route path="/posts/detail/:id" element={<UpdatePage/>}/>
                     <Route path="*" element={<NotFound/>}/>
                 </Routes>
             </div>

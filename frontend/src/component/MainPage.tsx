@@ -23,7 +23,7 @@ const MainPage = () => {
     const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
-        navigate("/posts/write");
+        navigate("/posts");
     }
 
     // const rowData = dataList.map((data: BoardData) => {

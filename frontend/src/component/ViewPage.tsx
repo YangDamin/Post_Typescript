@@ -56,7 +56,7 @@ const ViewPage = () => {
     // 게시물 수정
     const updateClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        navigate(`/posts/update/${id}`);
+        navigate(`/posts/detail/${id}`);
     }
 
     // 목록으로 돌아가기 버튼
@@ -69,7 +69,7 @@ const ViewPage = () => {
     const recommendClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
             axios({
-                url: `http://localhost:8080/posts/${id}`,
+                url: `http://localhost:8080/posts/recommend?id=${id}`,
                 method: 'put'
             }).then((res:any) => {
                 setRecommendCnt(res.data);
