@@ -7,12 +7,14 @@ import './App.css';
 import UpdatePage from "./component/UpdatePage";
 import ViewPage from "./component/ViewPage";
 import WritePage from "./component/WritePage";
+import NotFound from "./component/NotFound";
 
 /*
 * 1. zustand 따로 빼서 사용
 * 2. function >> () => {}
 * 3. 코드 정리(indent, 배치)
 * */
+
 
 const App = () => {
     return (
@@ -24,6 +26,7 @@ const App = () => {
                     <Route path="/posts/write" element={<WritePage/>}/>
                     <Route path="/posts/:id" element={<ViewPage/>}/>
                     <Route path="/posts/update/:id" element={<UpdatePage/>}/>
+                    <Route path="*" element={<NotFound/>}/>
                 </Routes>
             </div>
         </BrowserRouter>
