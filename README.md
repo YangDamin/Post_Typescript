@@ -9,7 +9,7 @@ Javascript->Typescript로 변경
   * mysql
 * Frontend
   * React
-  * Typescript
+  * Typescript, CSS, Bootstrap
   * 패키지 : webpack, babel
  
 ----
