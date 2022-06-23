@@ -2,6 +2,17 @@
 게시판 CRUD      
 Javascript->Typescript로 변경
 
+## 사용 기술
+* Backend
+  * SpringBoot
+  * mybatis
+  * mysql
+* Frontend
+  * React
+  * Typescript
+  * 패키지 : webpack, babel
+ 
+----
 ### 메인 페이지
 * 게시판의 모든 글들을 확인할 수 있다.
 * AGGrid를 이용해 표로 간편하게 볼 수 있게 함.
